@@ -1,58 +1,37 @@
 "use strict";
-const main=document.querySelector("main");
+function swap_style_sheet(sheet){
+    document.getElementById("css_document").setAttribute("href", sheet);  
+}
 
-//----------------Login----------------
+function create_element(parent, type, _class, text){
+    const new_element=document.createElement(type);
+    parent.appendChild(new_element);
+    new_element.classList=_class;
+    new_element.textContent=text;
+};
 
-let username;
-console.log(username);
-if(username===undefined){
-    swap_style_sheet("css/login.css")
-    create_login();
-    function create_login(){
-        create_element(main,"h1","login","LOGIN");
-        create_element(main,"h2","small_headline","User Name:");
-        create_element(main, "input","username_input","");
-        create_element(main,"h2","small_headline","Password:");
-        create_element(main, "input","password_input","");
-        create_element(main, "p","above_button_text","Let the magic start!");
-        create_element(main, "button","button","Login");
-        create_element(main,"h2","register_or_login_link","New to this? Register for free");
+/*async function _fetch (url, metod) {
+    if(metod)
+    if (metod === "Register") {
+        const request_post = new Request (url, {
+            action: "register",
+            user_name:"hej",
+            password:"hej",
+        })
     }
-    document.querySelector(".button").addEventListener("click",login_or_register);
-    document.querySelector(".register_or_login_link").addEventListener("click",login_or_register_event);
-    function login_or_register(event){
-        if(document.querySelector(".button").textContent==="Login"){
-            console.log(document.querySelector(".username_input").value);
-            console.log(document.querySelector(".password_input").value);
-        }
-        else{
-            console.log("nej");
-        }
-        
-    }
+}*/
 
-    function login_link(){
-        document.querySelector("#wrapper").style.backgroundColor="aquamarine";
-        document.querySelector(".login").textContent="LOGIN";
-        document.querySelector(".above_button_text").textContent="Let the magic start!";
-        document.querySelector(".button").textContent="Login";
-        document.querySelector(".register_or_login_link").textContent="New to this? Register for free";
+async function _fetch(url, _function){
+    const response=await fetch(url);
+    if (response.ok){
+        const resource=await response.json();
+        console.log(resource);
+        logged_in=true;
+        document.querySelector(".contacting_server").style.height="0%";
+        document.querySelector(".contacting_server").style.width="0%";
     }
-    //----------------Register----------------
-
-    function login_or_register_event(event){
-        if(document.querySelector("button").textContent==="Login"){
-            register();
-        }
-        else{
-            login_link()
-        }
-    }
-    function register(){
-        document.querySelector("#wrapper").style.backgroundColor="green";
-        document.querySelector(".login").textContent="REGISTER";
-        document.querySelector(".above_button_text").textContent="Ready when you are...";
-        document.querySelector(".button").textContent="Register";
-        document.querySelector(".register_or_login_link").textContent="Already have an account? Go to logn";
+    else{
+        console.log("something went wrong");
+        _function();
     }
 }
