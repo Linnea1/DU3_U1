@@ -10,28 +10,19 @@ function create_element(parent, type, _class, text){
     new_element.textContent=text;
 };
 
-/*async function _fetch (url, metod) {
-    if(metod)
-    if (metod === "Register") {
-        const request_post = new Request (url, {
-            action: "register",
-            user_name:"hej",
-            password:"hej",
-        })
-    }
-}*/
-
-async function _fetch(url, _function){
+async function _fetch(url, status_text){
+    create_element(document.querySelector("body"),"div","status_parent","");
+    create_element(document.querySelector(".status_parent"),"div","status_text",status_text);
     const response=await fetch(url);
     if (response.ok){
         const resource=await response.json();
         console.log(resource);
+        document.querySelector(".status_parent").remove();
         logged_in=true;
-        document.querySelector(".contacting_server").style.height="0%";
-        document.querySelector(".contacting_server").style.width="0%";
+        console.log(logged_in);
     }
     else{
-        console.log("something went wrong");
-        _function();
+        document.querySelector(".status_text").textContent="Something went wrong";
     }
 }
+
