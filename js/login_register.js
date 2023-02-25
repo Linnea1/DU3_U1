@@ -29,7 +29,7 @@ async function login_or_register(){
     let _prefix = `${prefix}?action=check_credentials&user_name=${_username}&password=${_password}`;
     if(document.querySelector(".button").textContent==="Login"){
         document.querySelector(".status_parent").style.visibility="visible";
-        document.querySelector(".status_text").textContent="Connecting to server..."
+        document.querySelector(".status_text").textContent="Contacting server..."
         const request_get = new Request (_prefix);
         const response = await fetch_function(request_get);
         check_request(request_get, "login");
@@ -39,6 +39,7 @@ async function login_or_register(){
         }
         else{
             document.querySelector(".status_parent").style.visibility="hidden";
+            logged_in=false;
         }
         login_logout();
     }   

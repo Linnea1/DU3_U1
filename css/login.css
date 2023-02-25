@@ -39,17 +39,6 @@ h1{
 input{
     width: 100%;
 }
-.contacting_server{
-    position:absolute;
-    top: 0;
-    width: 0;
-    height: 0;
-    background-color: rgba(255, 255, 255, 0.645);
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-    z-index: 1;
-}
 .status_parent{
     width: 100vw;
     height: 100vh;

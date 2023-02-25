@@ -66,13 +66,17 @@ async function play_quiz(){
     let response=await fetch_function(dog_picture);
     let resource=await response.json();
     let image=resource.message;
+    document.querySelector(".status_parent").style.visibility="visible";
+    document.querySelector(".status_text").textContent="Getting random dog image."
     console.log(resource);
     //document.querySelector(".dog_picture").style.backgroundImage=`url(${image})`;
     console.log(selected_dog.name);
     if(response.ok) {
         document.querySelector(".dog_picture").innerHTML= `<img class="image" src="${image}">`;
+        document.querySelector(".status_parent").style.visibility="hidden";
     } else {
         document.querySelector("#image_div").innerHTML= `<img class="image" src="media/logo.png">`;
+        document.querySelector(".status_parent").style.visibility="hidden";
     };
 }
 function quiz_event(event){
