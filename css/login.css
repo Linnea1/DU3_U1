@@ -6,10 +6,6 @@ p{
     text-align: center;
     font-family: "RobotoCondensed_regular",sans-serif;
 }
-footer{
-    position: absolute;
-    bottom: 0px;
-}
 h2{
     font-family: "RobotoCondensed_regular",sans-serif;
     font-size: 20px;
@@ -22,16 +18,11 @@ button{
     font-family: "RobotoCondensed_regular",sans-serif;
 }
 
-header>div{
-    align-self: center;
-    justify-self:baseline;
-    width: 40px;
-    height: 40px;
-    background-image: url("../media/logo.png");
-    background-size: cover;
-    background-position: center;
+
+#wrapper{
+    background-color: aquamarine;
 }
-#login_register{
+.login_register{
     width: 80%;
     margin: auto;
 }

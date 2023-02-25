@@ -10,33 +10,39 @@
     font-family: RobotoCondensed_light;
     src: url("../fonts/RobotoCondensed_light/RobotoCondensedLight.ttf");
 }
-body{
-    position: relative;
-    width: 100vw;
+#wrapper {
+    transition-property: background-color;
+    transition-duration: 1s;
     height: 100vh;
-    margin: 0px;
-    background-color: black;
-    position: relative;
-}
-#wrapper{
     width: 100vw;
-    height: 100vh;
-    background-color: aquamarine;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
     position: relative;
+    overflow-y: auto;
 }
-h3{
+*{
     font-family: "RobotoCondensed_regular",sans-serif;
-    font-size: 20px;
-    text-align: end;
+}
+body{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: RobotoCondensed_regular;
+}
+
+h3{
+   
 }
 header{
-    width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     padding: 0;
-    margin: auto;
+    margin: 0;
 }
 header>div{
     align-self: center;
@@ -47,9 +53,17 @@ header>div{
     background-size: cover;
     background-position: center;
 }
+header>h3{
+    display: flex;
+    font-family: RobotoCondensed_regular;
+    font-size: 21px;
+    align-items: center;
+    margin: 0;
+    justify-self: end;
+}
 footer{
-    width: 90%;
-    position: absolute;
-    bottom: 0px;
-    margin: auto;
+  
+}
+footer>p{
+
 }

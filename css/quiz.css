@@ -1,24 +1,41 @@
 .quiz{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+}
+#wrapper{
+    background-color: rgb(127, 255, 251);
+    transition-duration: 1s;
+    transition-property: background-color;
 }
 .logout{
-    width: 100%;
+    width: 80%;
     height: 40px;
     background-color:white;
     border-radius: 10px;
     display: flex;
     align-items: center;
+    gap:75%;
+    padding:0px 10px;
 }
 .dog_picture{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img{
     width: 80%;
-    min-height: 35%;;
-    background-image: url("../media/logo.png");
-    background-size:cover;
+    background-size: cover;
     background-position: center;
-    border: 2px solid red;
+    margin-top: 5vh;
+    margin-bottom: 10px;
     border-radius: 20px;
-    margin: auto;
+    background-image: url("../media/logo.png");
 }
 .logout_button{
     display: flex;
@@ -29,4 +46,29 @@
     width: 80%;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 5px;
+}
+.button_container>button{
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.659);
+}
+.pop_up{
+   position: absolute;
+   top: 0;
+   background-color: rgba(255, 255, 255, 0.659);
+   display: flex;
+   align-items: center;
+   z-index: 0;
+   width: 100vw;
+   height: 100vh;
+}
+.pop_up>div{
+    margin: auto;
+    width: 80%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
 }
