@@ -17,8 +17,14 @@ button{
     font-size: 20px;
     font-family: "RobotoCondensed_regular",sans-serif;
 }
-
-
+footer{
+    position: absolute;
+    padding: 20px 20px 20px 0px;
+    bottom: 0px;
+}
+.register_or_login_link:hover{
+    cursor: pointer;
+}
 #wrapper{
     background-color: aquamarine;
 }

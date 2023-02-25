@@ -1,6 +1,7 @@
 function start_quiz(){
     create_element(document.querySelector("main"),"div","quiz","");
-    create_element(document.querySelector(".quiz"),"div","logout",_username);
+    create_element(document.querySelector(".quiz"),"div","logout","");
+    create_element(document.querySelector(".logout"),"div","username",_username);
     create_element(document.querySelector(".logout"),"button","logout_button","logout");
     create_element(document.querySelector(".quiz"),"div","dog_picture","");
     create_element(document.querySelector(".quiz"),"div","button_container","");
