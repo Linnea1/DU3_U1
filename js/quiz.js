@@ -69,7 +69,6 @@ async function play_quiz(){
     document.querySelector(".status_parent").style.visibility="visible";
     document.querySelector(".status_text").textContent="Getting random dog image."
     console.log(resource);
-    //document.querySelector(".dog_picture").style.backgroundImage=`url(${image})`;
     console.log(selected_dog.name);
     if(response.ok) {
         document.querySelector(".dog_picture").innerHTML= `<img class="image" src="${image}">`;
@@ -90,6 +89,11 @@ function quiz_event(event){
 function logout(){
     document.querySelector(".quiz").remove();
     document.querySelector(".pop_up").remove();
-    create_login();
+    if(document.querySelector(".password_input")===null){
+        create_login();
+    }
+    document.querySelector(".login_register").style.height="100vh";
+    document.querySelector(".login_register").style.visibility="visible";
     swap_style_sheet("css/login.css")
+    localStorage.clear();
 }

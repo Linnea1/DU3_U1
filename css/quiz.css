@@ -12,7 +12,7 @@
 footer{
     display: flex;
     justify-content: flex-end;
-    margin-top: 10px;
+    margin-top: auto;
 }
 .logout{
     background-color: white;
@@ -83,4 +83,10 @@ button:hover{
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+    font-size: 20px;
+}
+.pop_up>div>button{
+    width: 80%;
+    padding: 7px;
+    background-color: white;
 }

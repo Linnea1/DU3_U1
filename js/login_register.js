@@ -6,7 +6,6 @@ let logged_in=localStorage.getItem("logged_in");
 console.log(logged_in);
 login_logout();
 
-
 function create_login(){
     document.querySelector(".login_register").style.visibility="visible";
     create_element(document.querySelector(".login_register"),"h1","login","LOGIN");
@@ -14,6 +13,7 @@ function create_login(){
     create_element(document.querySelector(".login_register"), "input","username_input","");
     create_element(document.querySelector(".login_register"),"h2","small_headline","Password:");
     create_element(document.querySelector(".login_register"), "input","password_input","");
+    document.querySelector(".password_input").type="password";
     create_element(document.querySelector(".login_register"), "p","above_button_text","Let the magic start!");
     create_element(document.querySelector(".login_register"), "button","button","Login");
     create_element(document.querySelector(".login_register"),"h2","register_or_login_link","New to this? Register for free");
@@ -56,9 +56,7 @@ async function login_or_register(){
             headers: {"Content-type": "application/json; charset=UTF-8"},
             body:JSON.stringify(body_post),
         });
-        const request_get = new Request (_prefix);
-        const response = await fetch_function(request_post);
-        check_request(request_get, "register");
+        check_request(request_post, "register");
     }
 }
 
@@ -80,16 +78,12 @@ function login_logout(){
         case "login":
             console.log("logged in");
             swap_style_sheet("css/quiz.css");
-            
             document.querySelector(".login_register").style.visibility="hidden";
-            
-            
+            document.querySelector(".login_register").style.height="0";
             start_quiz();
         break;
     }
 }
-   
-//----------------Register----------------
 
 function login_or_register_event(){
     if(document.querySelector("button").textContent==="Login"){
@@ -99,6 +93,7 @@ function login_or_register_event(){
         login_link()
     }
 }
+
 function register(){
     document.querySelector("#wrapper").style.backgroundColor="green";
     document.querySelector(".login").textContent="REGISTER";
