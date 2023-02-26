@@ -21,6 +21,7 @@ function start_quiz(){
     document.querySelector(`.button_3`).addEventListener("click", quiz_event);
     play_quiz();
 }
+
 function pop_up_answer(answer){
     document.querySelector(".pop_up").style.visibility="visible";
     document.querySelector(".answer_text").textContent=answer;
@@ -31,13 +32,16 @@ function pop_up_answer(answer){
         document.querySelector(".box").style.backgroundColor="red";
     }
 }
+
 function close_div(){
     document.querySelector(".pop_up").style.visibility="hidden";
     play_quiz();
 }
+
 function getRandomNumber(max) {
     return Math.floor(Math.random() * max);
 }
+
 function get_dogs(){
     let array_of_dogs=[];
     let selected_dogs=[];
@@ -52,6 +56,7 @@ function get_dogs(){
     return selected_dogs
 }
 let selected_dog_name;
+
 async function play_quiz(){
     document.querySelector(".pop_up").style.visibility="hidden";
     let dogs=get_dogs();
@@ -78,6 +83,7 @@ async function play_quiz(){
         document.querySelector(".status_parent").style.visibility="hidden";
     };
 }
+
 function quiz_event(event){
     if(event.target.textContent===selected_dog_name){
         pop_up_answer("CORRECT!");
@@ -86,6 +92,7 @@ function quiz_event(event){
         pop_up_answer("Wrong");
     }
 }
+
 function logout(){
     document.querySelector(".quiz").remove();
     document.querySelector(".pop_up").remove();
