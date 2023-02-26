@@ -2,14 +2,13 @@
 let _username;
 //----------------Login----------------
 
-let logged_in=false;
+let logged_in=localStorage.getItem("logged_in");
 console.log(logged_in);
+login_logout();
 
-swap_style_sheet("css/login.css")
-create_login();
-    
+
 function create_login(){
-    create_element(document.querySelector("main"),"div","login_register","")
+    document.querySelector(".login_register").style.visibility="visible";
     create_element(document.querySelector(".login_register"),"h1","login","LOGIN");
     create_element(document.querySelector(".login_register"),"h2","small_headline","User Name:");
     create_element(document.querySelector(".login_register"), "input","username_input","");
@@ -24,9 +23,10 @@ function create_login(){
 
 async function login_or_register(){
     let prefix = "https://teaching.maumt.se/apis/access/";
-    _username=document.querySelector(".username_input").value;
+    localStorage.setItem(`_username`,document.querySelector(".username_input").value);
+    _username=localStorage.getItem("_username");
     let _password=document.querySelector(".password_input").value;
-    let _prefix = `${prefix}?action=check_credentials&user_name=${_username}&password=${_password}`;
+    let _prefix = `${prefix}?action=check_credentials&user_name=${localStorage.getItem("_username")}&password=${_password}`;
     if(document.querySelector(".button").textContent==="Login"){
         document.querySelector(".status_parent").style.visibility="visible";
         document.querySelector(".status_text").textContent="Contacting server..."
@@ -34,7 +34,9 @@ async function login_or_register(){
         const response = await fetch_function(request_get);
         check_request(request_get, "login");
         if(response.ok){
-            logged_in=true;
+            
+            localStorage.setItem(`logged_in`,"login");
+            logged_in=localStorage.getItem("logged_in");
             document.querySelector(".status_parent").style.visibility="hidden";
         }
         else{
@@ -57,7 +59,6 @@ async function login_or_register(){
         const request_get = new Request (_prefix);
         const response = await fetch_function(request_post);
         check_request(request_get, "register");
-        login_logout();
     }
 }
 
@@ -71,13 +72,18 @@ function login_link(){
 
 function login_logout(){
     switch(logged_in){
-        case false:
+        case false||null:
             console.log("not logged in");
+            swap_style_sheet("css/login.css")
+            create_login();
             break;
-        case true:
+        case "login":
             console.log("logged in");
-            swap_style_sheet("css/quiz.css")
-            document.querySelector(".login_register").remove();
+            swap_style_sheet("css/quiz.css");
+            
+            document.querySelector(".login_register").style.visibility="hidden";
+            
+            
             start_quiz();
         break;
     }

@@ -1,4 +1,5 @@
 "use strict";
+
 function swap_style_sheet(sheet){
     document.getElementById("css_document").setAttribute("href", sheet);  
 }
